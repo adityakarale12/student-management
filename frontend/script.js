@@ -1,4 +1,5 @@
-const API = "http://127.0.0.1:8000/students";
+const API = "https://student-management-x2dd.vercel.app/
+    ";
 
 let students = [];
 
