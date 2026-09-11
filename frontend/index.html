@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🎓 Student Manager</h1>
+            <p>Manage your student records easily</p>
+        </header>
+
+        <section class="card">
+            <h2>Add Student</h2>
+
+            <div class="form-grid">
+                <input type="text" id="name" placeholder="Student Name">
+                <input type="text" id="course" placeholder="Course">
+                <input type="number" id="marks" placeholder="Marks">
+            </div>
+
+            <button class="add-btn" onclick="addStudent()">
+                Add Student
+            </button>
+
+            <p id="status"></p>
+        </section>
+
+        <section class="card">
+
+            <div class="table-header">
+                <div>
+                    <h2>Student Details</h2>
+                    <p>View all registered students</p>
+                </div>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="🔍 Search name or course"
+                    oninput="searchStudents()"
+                >
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Marks</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable">
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <section class="card delete-card">
+
+            <h2>Delete Student</h2>
+
+            <div class="delete-row">
+                <input
+                    type="number"
+                    id="deleteId"
+                    placeholder="Enter Student ID"
+                >
+
+                <button class="delete-btn" onclick="deleteStudent()">
+                    Delete Student
+                </button>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

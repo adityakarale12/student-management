@@ -4,10 +4,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 from supabase import create_client
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
 
@@ -25,6 +26,15 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 app = FastAPI()
 
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 class Student(BaseModel):
     name: str
     course: str
@@ -33,7 +43,9 @@ class Student(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Student Management API is running"}
+    return {
+        "message": "Student Management API is running"
+    }
 
 
 @app.post("/students")
